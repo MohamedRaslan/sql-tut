@@ -3,30 +3,24 @@
 this is the second line
 */
 
-SELECT 1 + 1;
--- this is a comment till the end of the line
-SELECT 1 + 1;
+SELECT 1 + 1; -- this is a comment till the end of the line
+SELECT 1 + 1; 
 # this is a comment
-SELECT 1 + 1;
+SELECT 1 + 1; 
 /* this is a comment */
-SELECT 1 + 1;
+SELECT 1 + 1; 
 /* this is a comment
 that can extend to mutliple lines
 */
 SELECT 1 + /* this can also be an in-line comment */ 1;
 
-SELECT 'Hello, SQL';
--- single quotes for strings
-SELECT "Hello, SQL";
--- double quotes for strings
-SELECT "My", "name", "is", "Ahmed";
--- select multiple values
-SELECT 1, "Test";
--- select different data types
-SELECT 'Hello, SQL' AS greeting;
--- alias
-SELECT "'This is a quoted text'";
--- embed different qoutes
+SELECT 'Hello, SQL'; -- single quotes for strings
+SELECT "Hello, SQL"; -- double quotes for strings
+SELECT "My", "name", "is", "Ahmed"; -- select multiple values
+SELECT 1, "Test"; -- select different data types
+SELECT 'Hello, SQL' AS greeting; -- alias
+SELECT "'This is a quoted text'"; -- embed different qoutes
+
 -- another way is to use the backslash as an escape character
 SELECT "\'This is a quoted text\'";
 
@@ -85,6 +79,8 @@ SELECT ADDDATE('2022-12-08', 24), DAY('2022-12-08'), DAYNAME('2022-12-08'), MONT
 
 SELECT CURDATE();
 
+SELECT ADDDATE(CURDATE(), 20), DAY(CURDATE());
+
 -- string functions
 SELECT CONCAT('my', 'name', 'is', 'prince');
 
@@ -138,15 +134,17 @@ SET @vara = 'a';
 
 SELECT @var5, @vara, @var10 := 10;
 
-SELECT @var11 = 11;
--- null
+SELECT @var11 = 11; -- null - Here it's a comparison , not assignment 
+
 --  select from tables
 --
 SELECT actor_id FROM sakila.actor;
 
 SELECT count(actor_id) FROM sakila.actor;
 
-SELECT DISTINCT actor_id FROM sakila.actor;
+SELECT DISTINCT actor_id FROM sakila.actor ORDER BY actor_id;
+SELECT count(DISTINCT actor_id) FROM sakila.actor;
+
 
 SELECT actor_id, first_name FROM sakila.actor;
 
@@ -169,30 +167,15 @@ SELECT * FROM actor;
 -- table stmt
 TABLE actor; -- similar to SELECT * FROM actor;
 
-SELECT actor_id AS "Actor ID", CONCAT(
-        LOWER(first_name), ' ', LOWER(last_name)
-    ) AS "Actor Full Name", last_update AS "Last updated"
-FROM actor;
+SELECT actor_id AS "Actor ID", CONCAT(LOWER(first_name), ' ', LOWER(last_name)) AS "Actor Full Name", last_update AS "Last updated" FROM actor;
 -- use built-in functions
 -- sorting
 --
 SELECT actor_id, first_name, last_name, last_update FROM actor;
 
-SELECT
-    actor_id,
-    first_name,
-    last_name,
-    last_update
-FROM actor
-ORDER BY first_name;
+SELECT actor_id,first_name, last_name, last_update FROM actor ORDER BY first_name;
 
-SELECT
-    actor_id,
-    first_name,
-    last_name,
-    last_update
-FROM actor
-ORDER BY last_name;
+SELECT actor_id, first_name, last_name, last_update FROM actor ORDER BY last_name ASC;
 
 SELECT rental_id, rental_date FROM rental ORDER BY rental_date;
 
@@ -211,17 +194,9 @@ SELECT actor_id, first_name FROM actor LIMIT 5, 10;
 
 SELECT actor_id, first_name FROM actor LIMIT 50, 10;
 
-(
-    SELECT actor_id, first_name
-    FROM actor
-    LIMIT 5, 10
-)
-UNION
-(
-    SELECT actor_id, first_name
-    FROM actor
-    LIMIT 50, 10
-);
+( SELECT actor_id, first_name FROM actor LIMIT 5, 10 )
+UNION DISTINCT
+( SELECT actor_id, first_name FROM actor LIMIT 50, 10 );
 
 -- where clause
 SELECT * FROM film_text;

@@ -36,7 +36,7 @@ DESC t2;
 CREATE TABLE t3 (
     id INT, 
     first_name VARCHAR(20),
-    CONSTRAINT id_unique UNIQUE (id)
+    CONSTRAINT id_unique UNIQUE (id , first_name)
     );
 DESC t3;
 
