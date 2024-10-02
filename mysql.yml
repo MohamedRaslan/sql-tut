@@ -1,0 +1,35 @@
+name: mysql-server
+
+
+services:
+
+  db:
+    image: mysql:latest
+    container_name: mysql-db
+    hostname: mysql-db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./samples:/usr/samples
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+
+  workbench:
+    image: lscr.io/linuxserver/mysql-workbench:latest
+    container_name: mysql-workbench
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./samples:/usr/samples
+    ports:
+      - 3000:3000
+      - 3001:3001
+    cap_add:
+      - IPC_LOCK
+    restart: unless-stopped
+
