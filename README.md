@@ -8,7 +8,7 @@ This repo contains the materials needed for my "SQL" tutorial
 - [ ] Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) to interact with the MySQL (Server) RDMS
 - [ ] Run the following command :
   ```sh
-  docker compose up -f mysql.yaml
+  docker compose -f ./mysql.yml up
   ```
 - [ ] Use the workbench to coonect to the database with following properties
 
