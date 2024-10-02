@@ -5,19 +5,19 @@ This repo contains the materials needed for my "SQL" tutorial
 ## Setup
 
 - [ ] Install docker [Docker Desktop](https://www.docker.com/products/docker-desktop/) if you don't have it in your system
-- [ ] Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) to interact with the MySQL (Server) RDMS
+- [ ] Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) to interact with the MySQL (Server) DMS
 - [ ] Run the following command :
   ```sh
-  docker compose -f ./mysql.yml up
+  docker compose -f ./mysql.yml up -d
   ```
-- [ ] Use the workbench to coonect to the database with following properties
+- [ ] Use the workbench web/desktop to coonect to the database with following properties
 
-      | Property | Value    |
-      |----------|----------|
-      | Hostname | mysql-db |
-      | Port     | 3306     |
-      | Username | root     |
-      | Password | 123456   |
+      | Property | Value                |
+      |----------|----------------------|
+      | Hostname | mysql-db / localhost |
+      | Port     | 3306                 |
+      | Username | root                 |
+      | Password | 123456               |
 
 TODO...
 
