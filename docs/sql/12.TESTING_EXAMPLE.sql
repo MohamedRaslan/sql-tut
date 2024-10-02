@@ -12,8 +12,8 @@
     -- Check size of columns "customers" table
     -- Check nulls in "customers" table
     -- Check column keys in "customers" table
+show databases;
 
-    
 use information_schema;
 show tables;
 
