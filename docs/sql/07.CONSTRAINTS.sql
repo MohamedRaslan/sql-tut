@@ -1,4 +1,3 @@
--- Active: 1687117690530@@mysql-db@3306@testdb
 show databases;
 
 DROP DATABASE IF EXISTS testdb;
