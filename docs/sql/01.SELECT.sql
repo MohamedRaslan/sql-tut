@@ -1,4 +1,5 @@
--- this is a comment
+-- this is a comment 
+
 /* this is a multimline comment
 this is the second line
 */
@@ -18,13 +19,13 @@ SELECT 'Hello, SQL'; -- single quotes for strings
 SELECT "Hello, SQL"; -- double quotes for strings
 SELECT "My", "name", "is", "Ahmed"; -- select multiple values
 SELECT 1, "Test"; -- select different data types
-SELECT 'Hello, SQL' AS greeting; -- alias
+SELECT 'Hello, SQL' AS greeting , "Hello, x" As xGreeting ; -- alias
 SELECT "'This is a quoted text'"; -- embed different qoutes
 
 -- another way is to use the backslash as an escape character
 SELECT "\'This is a quoted text\'";
 
--- SELECT "This is a single quote \' and this is a doublequote \"";
+SELECT "This is a single quote \' and this is a doublequote \"";
 
 SELECT "Line 1\nLine 2\nLine 3";
 
@@ -38,7 +39,7 @@ SELECT 5 % 2;
 -- boolean
 SELECT 1 = 2;
 
-SELECT 1 <> 2;
+SELECT 1 <> 2; -- same as !=  not equal 
 
 SELECT 'Hello, SQL' = 'Hello, SQL';
 
@@ -83,6 +84,8 @@ SELECT ADDDATE(CURDATE(), 20), DAY(CURDATE());
 
 -- string functions
 SELECT CONCAT('my', 'name', 'is', 'prince');
+
+SELECT CONCAT('fname', ' lname') AS full_name;
 
 SELECT CONCAT_WS( ' ', 'my', 'name', 'is', 'prince' );
 
@@ -140,9 +143,14 @@ SELECT @var11 = 11; -- null - Here it's a comparison , not assignment
 --
 SELECT actor_id FROM sakila.actor;
 
+use sakila;
+
+SELECT * FROM actor;
+
+
 SELECT count(actor_id) FROM sakila.actor;
 
-SELECT DISTINCT actor_id FROM sakila.actor ORDER BY actor_id;
+SELECT DISTINCT actor_id FROM sakila.actor ORDER BY actor_id ;
 SELECT count(DISTINCT actor_id) FROM sakila.actor;
 
 
@@ -167,7 +175,10 @@ SELECT * FROM actor;
 -- table stmt
 TABLE actor; -- similar to SELECT * FROM actor;
 
+
 SELECT actor_id AS "Actor ID", CONCAT(LOWER(first_name), ' ', LOWER(last_name)) AS "Actor Full Name", last_update AS "Last updated" FROM actor;
+
+
 -- use built-in functions
 -- sorting
 --
