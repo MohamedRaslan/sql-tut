@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/chai": "^5.0.0",
     "@types/mocha": "^10.0.8",
+    "@types/node": "^22.7.4",
     "@types/sinon": "^17.0.3",
     "chai": "^5.1.1",
     "cross-env": "^7.0.3",
@@ -25,5 +26,8 @@
     "sinon": "^19.0.2",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.3"
   }
 }

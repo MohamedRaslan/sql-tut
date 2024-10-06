@@ -3,6 +3,7 @@
 
 extension: ['ts']
 spec:
+  - 'tests/testing.setup.ts'
   - 'tests/**/*.spec.ts' # the positional arguments!
 require:
   - 'tsx'
