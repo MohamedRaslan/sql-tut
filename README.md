@@ -39,7 +39,24 @@ This repo contains the materials needed for my "SQL" tutorial
       | Username | root                         | root                                          |
       | Password | 123456                       | 123456                                        |
 
-TODO...
+## Run Automated Tests
+To run the automted tests scripts you need to do the following after the setup
+- [ ] You need to have *[nodejs](https://nodejs.org/en)* installed in your machine
+  > :warning: Note that its better to use a node version manager like *[nvm](https://github.com/nvm-sh/nvm)* or  *[nvm-windows](https://github.com/coreybutler/nvm-windows)* for windows to install *[nodejs](https://nodejs.org/en)*
+- [ ] Open a new terminal and change your current directory to `auto/basic-style`:
+    ```sh
+    cd ./auto/basic-style/
+    ```
+- [ ] Install all the needed packages with `npm`:
+    ```sh
+    npm install
+    ```
+- [ ] Run the test by the follwing command:
+    ```sh
+    npm run test
+    ```
+- [ ] You can check the testing and covarage reports throgh the terminal or from the auto genrated html files inside the `./sql-tut/auto/basic-style/reports` folder
+
 
 ## :nerd_face: Credits & Resources
 
