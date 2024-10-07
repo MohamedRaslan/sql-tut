@@ -10,7 +10,12 @@ services:
     command:  ["mysqld", "--mysql-native-password=ON"]
     restart: always
     volumes:
-      - ./samples:/usr/samples
+      - .:/usr/samples
+      - ./samples/sakila-db/sakila-schema.sql:/docker-entrypoint-initdb.d/00-sakila-schema.sql
+      - ./samples/sakila-db/sakila-data.sql:/docker-entrypoint-initdb.d/01-sakila-data.sql
+      - ./samples/world-db/world.sql:/docker-entrypoint-initdb.d/02-world.sql
+      - ./samples/classicmodels-db.sql:/docker-entrypoint-initdb.d/03-classicmodels-db.sql
+
     ports:
       - 3306:3306
       - 33060:33060
@@ -25,7 +30,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - ./samples:/usr/samples
+      - .:/usr/samples/sql-tut
     ports:
       - 3000:3000
       - 3001:3001

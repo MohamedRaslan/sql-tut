@@ -1,0 +1,39 @@
+{
+  "name": "basic-style",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "pretest": "npx shx rm -rf ./reports",
+    "test": "nyc cross-env TS_NODE_PROJECT='./tsconfig.json' mocha"
+  },
+  "keywords": [
+    "MySQL",
+    "Mocha",
+    "Nodjs",
+    "Typescript",
+    "Testing"
+  ],
+  "author": "MohamedRaslan <MohamedRaslanG@gmail.com> (https://github.com/MohamedRaslan)",
+  "description": "Basic tut for MySQL database testing with Nodjs, Typescript , and Mocha",
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@types/chai": "^5.0.0",
+    "@types/lodash": "^4.17.10",
+    "@types/mocha": "^10.0.8",
+    "@types/node": "^22.7.4",
+    "@types/sinon": "^17.0.3",
+    "chai": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "lodash": "^4.17.21",
+    "mocha": "^10.7.3",
+    "mochawesome": "^7.1.3",
+    "nyc": "^17.1.0",
+    "sinon": "^19.0.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.3"
+  }
+}
