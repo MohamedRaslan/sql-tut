@@ -21,6 +21,12 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 10s
+      retries: 80
 
   workbench:
     image: lscr.io/linuxserver/mysql-workbench:latest
@@ -36,5 +42,8 @@ services:
       - 3001:3001
     cap_add:
       - IPC_LOCK
+    depends_on:
+      db:
+        condition: service_healthy
     restart: unless-stopped
 
