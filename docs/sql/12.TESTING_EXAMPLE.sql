@@ -44,7 +44,8 @@ SELECT column_name FROM information_schema.columns WHERE table_name="customers"
 SELECT column_name, data_type FROM information_schema.columns WHERE table_name="customers"
 
 -- Check size of columns "customers" table
-SELECT column_name, column_types FROM information_schema.columns WHERE table_name="customers"
+SELECT column_name, column_type FROM information_schema.columns WHERE table_name="customers"
+
 
 -- Check nulls in "customers" table
 SELECT column_name, is_nullable FROM information_schema.columns WHERE table_name="customers"

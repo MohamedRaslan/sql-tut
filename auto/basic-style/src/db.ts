@@ -1,5 +1,4 @@
 import mysql from "mysql2/promise";
-
 // Create the connection pool. The pool-specific settings are the defaults
 export const dbPool = mysql.createPool({
   host: "localhost",
@@ -14,4 +13,5 @@ export const dbPool = mysql.createPool({
   queueLimit: 0,
   enableKeepAlive: true,
   keepAliveInitialDelay: 0,
+  //multipleStatements: true,
 });

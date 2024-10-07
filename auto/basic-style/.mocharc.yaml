@@ -7,5 +7,12 @@ spec:
   - 'tests/**/*.spec.ts' # the positional arguments!
 require:
   - 'tsx'
-
+  - 'mochawesome/register'
+enable-source-maps: true
+timeout: 2000
+reporter: mochawesome
+reporter-option:
+  - 'reportDir=./reports/mochawesome'
+  - 'consoleReporter=spec'
+  - 'reportFilename=basic-database-testing-report'
 recursive: true

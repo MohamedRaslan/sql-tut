@@ -1,30 +1,24 @@
 import { dbPool } from "../src/db";
 import { PoolConnection } from "mysql2/promise";
+import { expect } from "chai";
 
 let conn: PoolConnection;
 
-describe("Calculator Tests", () => {
+describe("Basic DB Tests", () => {
   beforeEach("Init the database connection", async () => {
-    console.info("Init the database connection");
     conn = await dbPool.getConnection();
   });
 
   after("Release the database connection ", async () => {
     conn.release();
-    console.info("Database connection closed");
   });
 
-  it("check databases", async () => {
-    // show databases;
-    // use information_schema;
-    // show tables;
-    // Do something with the connection
+  it("Check the existence of the needed databases", async () => {
     const [rows, fields] = await conn.query({
-      sql: "SELECT * FROM information_schema.columns",
+      sql: "show databases",
       rowsAsArray: true,
     });
-
-    console.log(rows);
-    console.log(fields);
+    expect(rows).to.be.an("array");
+    expect(rows).to.includes.deep.members([["classicmodels"], ["information_schema"], ["sakila"], ["sys"], ["world"]]);
   });
 });
