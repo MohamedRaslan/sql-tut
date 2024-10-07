@@ -9,7 +9,7 @@ This repo contains the materials needed for my "SQL" tutorial
 - [ ] We use docker compose to install and run an RDMS instance of the MySQL (Server)
   - [ ]  Run the following command to install and run an instance of MySQL(Server), and MySQL workbench web portal :
       ```sh
-      docker compose -f ./mysql.yml up -d
+      docker compose -f ./mysql.yml up -d  --wait --wait-timeout 30
       ```
   - [ ]  Run the following command to stop them:
       ```sh
