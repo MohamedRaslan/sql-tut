@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: v20.14.0
           cache: npm
+          cache-dependency-path: "**/package-lock.json"
 
       - name: Installing Project Dependencies
         working-directory: auto/basic-style
