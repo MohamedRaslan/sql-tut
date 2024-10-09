@@ -105,3 +105,86 @@ CALL sp3(2, @first_name);
 SELECT @first_name;
 
 
+-- views
+-- in 01.SELECT.sql
+
+-- triggers
+-- https://www.mysqltutorial.org/mysql-triggers/ 
+
+
+CREATE DATABASE IF NOT EXISTS salariesdb;
+
+USE salariesdb;
+
+-- drop table salary;
+
+CREATE TABLE salary (
+    id INT KEY,
+    name VARCHAR(20),
+    age INT,
+    balance INT,
+    balance_lastupdate DATETIME
+);
+
+INSERT INTO salary (id, name, age, balance) VALUES 
+    (1, "Mohamed Hassan", 35, 4500),
+    (2, "Khaled Ahmed", 26, 2800),
+    (3, "Amr Hamed", 31, 3560),
+    (4, "Ahmed Emad", 22, 2500);
+
+SELECT * from salary;
+
+
+
+-- Create a trigger
+
+CREATE TRIGGER trLastBalanceUpdate BEFORE
+UPDATE ON employees FOR EACH ROW
+SET
+    NEW.balance_lastupdate = NOW();
+
+-- check the trigger
+
+select
+    trigger_schema,
+    trigger_name,
+    action_statement
+from information_schema.triggers
+WHERE
+    trigger_schema = "salariesdb"
+    AND event_object_table = "employees";
+
+-- or 
+
+SHOW TRIGGERS IN salariesdb WHERE `Table` = 'employees';
+
+-- Triger the trigger 
+UPDATE employees set balance = 500 WHERE id = 1;
+SELECT * from employees;
+
+UPDATE employees set age = 20 WHERE id = 2;
+SELECT * from employees;
+
+
+-- Better Trigger
+DROP Trigger IF EXISTS salariesdb.trLastBalanceUpdate;
+
+DELIMITER ;;
+CREATE Trigger trLastBalanceUpdate BEFORE
+UPDATE ON employees FOR EACH ROW
+BEGIN
+    IF NEW.balance <> OLD.balance THEN
+        SET NEW.balance_lastupdate = NOW();
+    END IF;
+END ;;
+DELIMITER;
+
+
+-- check the trigger
+SHOW TRIGGERS IN salariesdb WHERE `Table` = 'employees';
+
+UPDATE employees set balance = 1200 WHERE id = 1;
+SELECT * from employees;
+
+UPDATE employees set age = 20 WHERE id = 2;
+SELECT * from employees;
